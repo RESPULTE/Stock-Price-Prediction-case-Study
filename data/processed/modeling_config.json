@@ -7,10 +7,8 @@
     "adx_14",
     "obv",
     "adj_close_smooth",
-    "sma_10",
     "ema_20",
-    "atr_14",
-    "target_ret_1d_pct"
+    "atr_14"
   ],
   "train_feature_cols": [
     "rsi_14",
@@ -19,10 +17,8 @@
     "adx_14",
     "obv",
     "adj_close_smooth",
-    "sma_10",
     "ema_20",
-    "atr_14",
-    "target_ret_1d_pct"
+    "atr_14"
   ],
   "target_options": "target_close_1d",
   "target_col": "target_close_1d"
