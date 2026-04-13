@@ -1,6 +1,6 @@
 {
   "data_csv": "..\\data\\processed\\aapl_features_smoothed.csv",
-  "all_feature_cols": [
+  "feature_cols": [
     "rsi_14",
     "macd_hist_12_26_9",
     "bb_bandwidth_20_2",
@@ -8,18 +8,8 @@
     "obv",
     "adj_close_smooth",
     "ema_20",
-    "atr_14"
+    "atr_14",
+    "volume"
   ],
-  "train_feature_cols": [
-    "rsi_14",
-    "macd_hist_12_26_9",
-    "bb_bandwidth_20_2",
-    "adx_14",
-    "obv",
-    "adj_close_smooth",
-    "ema_20",
-    "atr_14"
-  ],
-  "target_options": "target_close_1d",
   "target_col": "target_close_1d"
 }
