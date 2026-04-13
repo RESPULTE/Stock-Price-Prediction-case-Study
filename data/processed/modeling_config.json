@@ -1,0 +1,35 @@
+{
+  "data_parquet": "..\\data\\processed\\aapl_features_smoothed.parquet",
+  "data_csv": "..\\data\\processed\\aapl_features_smoothed.csv",
+  "all_feature_cols": [
+    "rsi_14",
+    "macd_hist_12_26_9",
+    "bb_bandwidth_20_2",
+    "adx_14",
+    "obv",
+    "adj_close_smooth",
+    "sma_10",
+    "ema_20",
+    "macd_line_12_26_9",
+    "macd_signal_12_26_9",
+    "atr_14"
+  ],
+  "train_feature_cols": [
+    "rsi_14",
+    "macd_hist_12_26_9",
+    "bb_bandwidth_20_2",
+    "adx_14",
+    "obv",
+    "adj_close_smooth",
+    "sma_10",
+    "ema_20",
+    "macd_line_12_26_9",
+    "macd_signal_12_26_9",
+    "atr_14"
+  ],
+  "target_options": [
+    "target_ret_1d_pct",
+    "target_close_1d"
+  ],
+  "target_col": "target_close_1d"
+}
