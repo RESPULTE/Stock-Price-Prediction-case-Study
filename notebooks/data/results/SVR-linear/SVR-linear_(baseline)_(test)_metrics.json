@@ -1,8 +1,8 @@
 [
   {
     "Model": "SVR-linear_(baseline)_(test)",
-    "MAE": 4.3317,
-    "RMSE": 5.9721,
+    "MAE": 4.3315,
+    "RMSE": 5.972,
     "MAPE": 0.0191,
     "R2": 0.9477
   }

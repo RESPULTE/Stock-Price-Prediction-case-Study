@@ -9,6 +9,7 @@ from sklearn.model_selection import GridSearchCV, TimeSeriesSplit
 from json_utils import save_result_json
 
 
+TEST_SIZE = 0.2
 
 
 def load_data():
@@ -24,7 +25,7 @@ def load_data():
     return df, feature_cols, target_col
 
 
-def train_test_split(df, feature_cols, target_col, test_size=0.2):
+def train_test_split(df, feature_cols, target_col, test_size=TEST_SIZE):
     n_samples = len(df)
     n_test = int(n_samples * test_size)
 
@@ -265,18 +266,15 @@ def time_series_grid_search(
 
     grid.fit(X_train, y_train)
 
-    best_cv_score = grid.best_score_
-    is_negated_metric = isinstance(scoring, str) and scoring.startswith("neg_")
-    best_cv_value = -best_cv_score if is_negated_metric else best_cv_score
-    metric_name = scoring.replace("neg_", "") if is_negated_metric else scoring
-
-    print(f"Best CV {metric_name}:", best_cv_value)
     print("Best params:", grid.best_params_)
 
     best_estimator = grid.best_estimator_
+    y_pred_train = best_estimator.predict(X_train)
+    metrics_train = regression_metrics(y_train, y_pred_train, f"{model_name}_(tuned)_(train)", save_json=save_json)
+    print(metrics_train)
 
     y_pred_test = best_estimator.predict(X_test)
-    metrics_test = regression_metrics(y_test, y_pred_test, model_name, save_json=save_json)
+    metrics_test = regression_metrics(y_test, y_pred_test, f"{model_name}_(tuned)_(test)", save_json=save_json)
 
     print(metrics_test)
 

@@ -1,9 +1,9 @@
 [
   {
     "Model": "Random Forest_(baseline)_(train)",
-    "MAE": 0.6564,
-    "RMSE": 1.0498,
-    "MAPE": 0.0067,
-    "R2": 0.9997
+    "MAE": 0.5215,
+    "RMSE": 0.8334,
+    "MAPE": 0.0053,
+    "R2": 0.9998
   }
 ]

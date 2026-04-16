@@ -1,6 +1,6 @@
 [
   {
-    "Model": "elasticnet_(tuned)",
+    "Model": "elasticnet_(tuned)_(test)",
     "MAE": 4.0453,
     "RMSE": 5.4991,
     "MAPE": 0.0178,

@@ -1,0 +1,9 @@
+[
+  {
+    "Model": "SVR-linear_(tuned)_(tuned)_(test)",
+    "MAE": 3.9648,
+    "RMSE": 5.4393,
+    "MAPE": 0.0175,
+    "R2": 0.9566
+  }
+]

@@ -141,9 +141,7 @@ def load_feature_importance() -> pd.DataFrame:
         payload = _load_json(files[-1])
         for rec in payload:
             val = None
-            if "importance" in rec:
-                val = rec["importance"]
-            elif "coef_scaled" in rec:
+            if "coef_scaled" in rec:
                 val = abs(rec["coef_scaled"])
             elif "coef_original_units" in rec:
                 val = abs(rec["coef_original_units"])

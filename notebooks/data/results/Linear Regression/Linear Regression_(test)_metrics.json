@@ -1,9 +1,0 @@
-[
-  {
-    "Model": "Linear Regression_(test)",
-    "MAE": 3.946,
-    "RMSE": 5.3718,
-    "MAPE": 0.0174,
-    "R2": 0.9576
-  }
-]

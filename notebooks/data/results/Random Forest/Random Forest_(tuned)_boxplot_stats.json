@@ -1,12 +1,12 @@
 [
   {
-    "Q1 (25%)": -24.987,
-    "Median (50%)": -17.2861,
-    "Q3 (75%)": -10.8421,
-    "IQR (Q3-Q1)": 14.1448,
-    "Lower fence (Q1-1.5*IQR)": -46.2042,
-    "Upper fence (Q3+1.5*IQR)": 10.3751,
-    "Lower whisker (min within fence)": -33.2047,
-    "Upper whisker (max within fence)": 8.3654
+    "Q1 (25%)": -24.8566,
+    "Median (50%)": -17.2944,
+    "Q3 (75%)": -10.6286,
+    "IQR (Q3-Q1)": 14.228,
+    "Lower fence (Q1-1.5*IQR)": -46.1986,
+    "Upper fence (Q3+1.5*IQR)": 10.7134,
+    "Lower whisker (min within fence)": -32.9992,
+    "Upper whisker (max within fence)": 8.8368
   }
 ]

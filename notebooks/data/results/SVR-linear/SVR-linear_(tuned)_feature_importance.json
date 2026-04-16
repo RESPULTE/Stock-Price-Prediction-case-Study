@@ -1,47 +1,47 @@
 [
   {
     "feature": "macd_hist_12_26_9",
-    "coef_scaled": 0.650826996437913,
-    "coef_original_units": 1.1536102614127326
+    "coef_scaled": 0.6489985072348705,
+    "coef_original_units": 1.150369209634621
   },
   {
     "feature": "adj_close_smooth",
-    "coef_scaled": 59.572210670392806,
-    "coef_original_units": 1.0568039867457537
+    "coef_scaled": 59.59157378724103,
+    "coef_original_units": 1.0571474828017104
   },
   {
     "feature": "rsi_14",
-    "coef_scaled": 0.1301300882086398,
-    "coef_original_units": 0.0052371835165972245
+    "coef_scaled": 0.1299597380014017,
+    "coef_original_units": 0.005230327366942489
   },
   {
     "feature": "volume",
-    "coef_scaled": 0.1468305885193013,
-    "coef_original_units": 3.3174028996130278e-09
+    "coef_scaled": 0.14682559976430642,
+    "coef_original_units": 3.31729018665279e-09
   },
   {
     "feature": "obv",
-    "coef_scaled": 0.5104434347506235,
-    "coef_original_units": 3.797349185453226e-11
+    "coef_scaled": 0.5104478268135431,
+    "coef_original_units": 3.797381859390071e-11
   },
   {
     "feature": "adx_14",
-    "coef_scaled": -0.008216832293575393,
-    "coef_original_units": -0.00047157853977136704
+    "coef_scaled": -0.009174029772605508,
+    "coef_original_units": -0.0005265137962432307
   },
   {
     "feature": "bb_bandwidth_20_2",
-    "coef_scaled": -0.07893848406347281,
-    "coef_original_units": -0.015841239590983106
+    "coef_scaled": -0.07868607146122208,
+    "coef_original_units": -0.01579058501516755
   },
   {
     "feature": "atr_14",
-    "coef_scaled": -0.04422507388819685,
-    "coef_original_units": -0.042604326298263856
+    "coef_scaled": -0.04496285649037457,
+    "coef_original_units": -0.043315070217451825
   },
   {
     "feature": "ema_20",
-    "coef_scaled": -3.566929200800871,
-    "coef_original_units": -0.06342938327600804
+    "coef_scaled": -3.585574907041213,
+    "coef_original_units": -0.06376095276345016
   }
 ]

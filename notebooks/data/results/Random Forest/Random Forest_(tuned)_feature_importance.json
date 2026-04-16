@@ -1,38 +1,38 @@
 [
   {
     "feature": "ema_20",
-    "importance": 0.6335897661922052
+    "importance": 0.6773257665749831
   },
   {
     "feature": "adj_close_smooth",
-    "importance": 0.25852077975374266
+    "importance": 0.24736286063812205
   },
   {
     "feature": "obv",
-    "importance": 0.1064623165813897
+    "importance": 0.07409107322622181
   },
   {
     "feature": "rsi_14",
-    "importance": 0.00031417036196413765
+    "importance": 0.0002859610440059457
   },
   {
     "feature": "macd_hist_12_26_9",
-    "importance": 0.00027189924227489495
+    "importance": 0.00023949549767436393
   },
   {
     "feature": "atr_14",
-    "importance": 0.00022989473501988645
+    "importance": 0.00018673468947395824
   },
   {
     "feature": "bb_bandwidth_20_2",
-    "importance": 0.00021186021690804488
+    "importance": 0.0001866987389239121
   },
   {
     "feature": "adx_14",
-    "importance": 0.0002107467868819062
+    "importance": 0.00016430100538598758
   },
   {
     "feature": "volume",
-    "importance": 0.0001885661296136112
+    "importance": 0.00015710858520870107
   }
 ]
