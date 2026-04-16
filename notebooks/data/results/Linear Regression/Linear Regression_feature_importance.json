@@ -1,0 +1,47 @@
+[
+  {
+    "feature": "adj_close_smooth",
+    "coef_scaled": 1.3136625369749486,
+    "coef_original_units": 1.3136625369749486
+  },
+  {
+    "feature": "macd_hist_12_26_9",
+    "coef_scaled": 0.08729671958838468,
+    "coef_original_units": 0.08729671958838468
+  },
+  {
+    "feature": "bb_bandwidth_20_2",
+    "coef_scaled": 0.022767906801280262,
+    "coef_original_units": 0.022767906801280262
+  },
+  {
+    "feature": "obv",
+    "coef_scaled": 6.401986232295562e-11,
+    "coef_original_units": 6.401986232295562e-11
+  },
+  {
+    "feature": "volume",
+    "coef_scaled": -3.1753886342016023e-09,
+    "coef_original_units": -3.1753886342016023e-09
+  },
+  {
+    "feature": "adx_14",
+    "coef_scaled": -0.005676462874357114,
+    "coef_original_units": -0.005676462874357114
+  },
+  {
+    "feature": "rsi_14",
+    "coef_scaled": -0.008975519942597123,
+    "coef_original_units": -0.008975519942597123
+  },
+  {
+    "feature": "atr_14",
+    "coef_scaled": -0.2189357808169135,
+    "coef_original_units": -0.2189357808169135
+  },
+  {
+    "feature": "ema_20",
+    "coef_scaled": -0.3291233240728834,
+    "coef_original_units": -0.3291233240728834
+  }
+]

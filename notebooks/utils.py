@@ -6,6 +6,39 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import GridSearchCV, TimeSeriesSplit
+from typing import Any
+
+
+def _to_jsonable(obj: Any) -> Any:
+    if isinstance(obj, pd.DataFrame):
+        records = obj.to_dict(orient="records")
+        return [_to_jsonable(r) for r in records]
+
+    if isinstance(obj, dict):
+        return {str(k): _to_jsonable(v) for k, v in obj.items()}
+
+    try:
+        json.dumps(obj)
+        return obj
+    except TypeError:
+        return str(obj)
+
+
+def save_result_json(
+    result: Any,
+    *,
+    default_filename: str = "model_result.json",
+    indent: int = 2,
+) -> Path:
+    folder_name = default_filename.split("_")[0]
+    path = Path("data/results") / folder_name / default_filename
+    if path.suffix.lower() != ".json":
+        path = path.with_suffix(".json")
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = _to_jsonable(result)
+    path.write_text(json.dumps(payload, indent=indent, ensure_ascii=False), encoding="utf-8")
+
 
 def load_data():
     CONFIG_PATH = Path("../data/processed/modeling_config.json")
@@ -45,7 +78,13 @@ def train_test_split(df, feature_cols, target_col, test_size=0.2):
     return X_train, y_train, X_test, y_test
 
 
-def regression_metrics(y_true, y_pred, model_name: str) -> pd.DataFrame:
+def regression_metrics(
+    y_true,
+    y_pred,
+    model_name: str,
+    *,
+    save_json: bool = False,
+) -> pd.DataFrame:
     metrics = {
         "Model": model_name,
         "MAE": mean_absolute_error(y_true, y_pred),
@@ -53,10 +92,21 @@ def regression_metrics(y_true, y_pred, model_name: str) -> pd.DataFrame:
         "MAPE": mean_absolute_percentage_error(y_true, y_pred),
         "R2": r2_score(y_true, y_pred),
     }
-    return pd.DataFrame([metrics]).round(4)
+    df = pd.DataFrame([metrics]).round(4)
+    if save_json:
+        save_result_json(
+            df,
+            default_filename=f"{model_name}_metrics.json",
+        )
+    return df
 
 
-def visualize_boxplot_stats(x):
+def visualize_boxplot_stats(
+    x,
+    *,
+    save_json: bool = False,
+    model_name: str = "Model",
+):
     q1 = np.percentile(x, 25)
     q2 = np.percentile(x, 50)
     q3 = np.percentile(x, 75)
@@ -69,10 +119,8 @@ def visualize_boxplot_stats(x):
     upper_whisker = np.max(x[x <= upper_fence])
 
     stats_df = pd.DataFrame(
-        {
-            "value": [q1, q2, q3, iqr, lower_fence, upper_fence, lower_whisker, upper_whisker]
-        },
-        index=[
+        [[q1, q2, q3, iqr, lower_fence, upper_fence, lower_whisker, upper_whisker]],
+        columns=[
             "Q1 (25%)",
             "Median (50%)",
             "Q3 (75%)",
@@ -84,10 +132,13 @@ def visualize_boxplot_stats(x):
         ],
     )
 
-    return stats_df.round(4)
+    stats_df = stats_df.round(4)
+    if save_json:
+        save_result_json(stats_df, default_filename=f"{model_name}_boxplot_stats.json")
+    return stats_df
 
 
-def visualize_predictions(y, y_pred, model_name: str):
+def visualize_predictions(y, y_pred, model_name: str, save_json: bool = False):
     y_test_arr = np.asarray(y)
     best_pred_arr = np.asarray(y_pred)
     pct_diff = np.where(y_test_arr != 0, ((best_pred_arr - y_test_arr) / y_test_arr) * 100, np.nan)
@@ -118,14 +169,21 @@ def visualize_predictions(y, y_pred, model_name: str):
     plt.tight_layout()
     plt.show()
 
-    visualize_boxplot_stats(valid_pct_diff)
+    visualize_boxplot_stats(valid_pct_diff, save_json=save_json, model_name=model_name)
 
 
 
 
 
 
-def visualize_feature_importance(model, scalar, feature_cols, model_name: str):
+def visualize_feature_importance(
+    model,
+    scalar,
+    feature_cols,
+    model_name: str,
+    *,
+    save_json: bool = False,
+):
     scaler = scalar
     estimator = model
 
@@ -155,18 +213,31 @@ def visualize_feature_importance(model, scalar, feature_cols, model_name: str):
     plt.tight_layout()
     plt.show()
 
+    if save_json:
+        save_result_json(
+            coef_df,
+            default_filename=f"{model_name}_feature_importance.json",
+        )
     return coef_df
 
 
 
-def train_test_model(model, X_train, y_train, X_test, y_test):
-    model_name = type(model).__name__
+def train_test_model(
+    model,
+    X_train,
+    y_train,
+    X_test,
+    y_test,
+    *,
+    model_name: str = None,
+    save_json: bool = False,
+):
     model.fit(X_train, y_train)
     pred_train = model.predict(X_train)
     pred_test = model.predict(X_test)
 
-    metrics_test = regression_metrics(y_test, pred_test, f"{model_name} (test)")
-    metrics_train = regression_metrics(y_train, pred_train, f"{model_name} (train)")
+    metrics_test = regression_metrics(y_test, pred_test, f"{model_name}_(test)", save_json=save_json)
+    metrics_train = regression_metrics(y_train, pred_train, f"{model_name}_(train)", save_json=save_json)
 
     print(metrics_train.round(4))
     print(metrics_test.round(4))
@@ -203,6 +274,8 @@ def time_series_grid_search(
     n_splits: int = 5,
     n_jobs: int = -1,
     verbose: int = 1,
+    model_name: str = "",
+    save_json: bool = False,
 ):
     """
     Run an exhaustive GridSearchCV using TimeSeriesSplit (forward-in-time CV).
@@ -231,12 +304,9 @@ def time_series_grid_search(
 
     best_estimator = grid.best_estimator_
 
-    y_pred_test = None
-    metrics_test = None
-    label = f"{type(best_estimator).__name__} (tuned via TimeSeriesSplit)"
-    if X_test is not None:
-        y_pred_test = best_estimator.predict(X_test)
-        metrics_test = regression_metrics(y_test, y_pred_test, label)
-        print(metrics_test)
+    y_pred_test = best_estimator.predict(X_test)
+    metrics_test = regression_metrics(y_test, y_pred_test, model_name, save_json=save_json)
+
+    print(metrics_test)
 
     return best_estimator, y_pred_test

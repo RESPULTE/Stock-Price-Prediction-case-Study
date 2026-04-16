@@ -1,0 +1,9 @@
+[
+  {
+    "Model": "Random Forest_(baseline)_(test)",
+    "MAE": 43.2025,
+    "RMSE": 49.7932,
+    "MAPE": 0.1773,
+    "R2": -2.6392
+  }
+]

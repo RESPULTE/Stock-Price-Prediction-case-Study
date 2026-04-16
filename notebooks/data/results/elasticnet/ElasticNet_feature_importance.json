@@ -1,0 +1,47 @@
+[
+  {
+    "feature": "macd_hist_12_26_9",
+    "coef_scaled": 0.5673982007077425,
+    "coef_original_units": 1.0057302328054483
+  },
+  {
+    "feature": "adj_close_smooth",
+    "coef_scaled": 55.69103057985499,
+    "coef_original_units": 0.9879523099857184
+  },
+  {
+    "feature": "rsi_14",
+    "coef_scaled": 0.44986954841312177,
+    "coef_original_units": 0.01810533917252668
+  },
+  {
+    "feature": "bb_bandwidth_20_2",
+    "coef_scaled": 0.05543631403911701,
+    "coef_original_units": 0.011124864420103464
+  },
+  {
+    "feature": "obv",
+    "coef_scaled": 0.8089168120267606,
+    "coef_original_units": 6.017786473735203e-11
+  },
+  {
+    "feature": "volume",
+    "coef_scaled": -0.0,
+    "coef_original_units": -0.0
+  },
+  {
+    "feature": "ema_20",
+    "coef_scaled": 0.0,
+    "coef_original_units": 0.0
+  },
+  {
+    "feature": "adx_14",
+    "coef_scaled": -0.039842868115314484,
+    "coef_original_units": -0.002286652677676531
+  },
+  {
+    "feature": "atr_14",
+    "coef_scaled": -0.08863566685103949,
+    "coef_original_units": -0.08538737282231507
+  }
+]

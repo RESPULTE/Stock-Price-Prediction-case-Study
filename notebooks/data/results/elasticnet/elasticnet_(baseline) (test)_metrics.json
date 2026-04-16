@@ -1,0 +1,9 @@
+[
+  {
+    "Model": "elasticnet_(baseline) (test)",
+    "MAE": 35.1281,
+    "RMSE": 37.35,
+    "MAPE": 0.1489,
+    "R2": -1.0476
+  }
+]

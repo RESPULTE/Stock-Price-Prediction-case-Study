@@ -1,0 +1,38 @@
+[
+  {
+    "feature": "ema_20",
+    "importance": 0.6335897661922052
+  },
+  {
+    "feature": "adj_close_smooth",
+    "importance": 0.25852077975374266
+  },
+  {
+    "feature": "obv",
+    "importance": 0.1064623165813897
+  },
+  {
+    "feature": "rsi_14",
+    "importance": 0.00031417036196413765
+  },
+  {
+    "feature": "macd_hist_12_26_9",
+    "importance": 0.00027189924227489495
+  },
+  {
+    "feature": "atr_14",
+    "importance": 0.00022989473501988645
+  },
+  {
+    "feature": "bb_bandwidth_20_2",
+    "importance": 0.00021186021690804488
+  },
+  {
+    "feature": "adx_14",
+    "importance": 0.0002107467868819062
+  },
+  {
+    "feature": "volume",
+    "importance": 0.0001885661296136112
+  }
+]

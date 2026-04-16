@@ -1,0 +1,12 @@
+[
+  {
+    "Q1 (25%)": -1.5293,
+    "Median (50%)": -0.3843,
+    "Q3 (75%)": 0.8922,
+    "IQR (Q3-Q1)": 2.4215,
+    "Lower fence (Q1-1.5*IQR)": -5.1616,
+    "Upper fence (Q3+1.5*IQR)": 4.5245,
+    "Lower whisker (min within fence)": -5.0135,
+    "Upper whisker (max within fence)": 4.4382
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "Model": "Random Forest_(tuned)",
+    "MAE": 43.2589,
+    "RMSE": 49.8361,
+    "MAPE": 0.1776,
+    "R2": -2.6454
+  }
+]
