@@ -1,5 +1,5 @@
 {
-  "data_csv": "..\\data\\processed\\aapl_features_smoothed.csv",
+  "data_csv": "data\\processed\\aapl_features_smoothed.csv",
   "feature_cols": [
     "rsi_14",
     "macd_hist_12_26_9",

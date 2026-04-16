@@ -6,7 +6,7 @@
     "IQR (Q3-Q1)": 2.4203,
     "Lower fence (Q1-1.5*IQR)": -5.3175,
     "Upper fence (Q3+1.5*IQR)": 4.3635,
-    "Lower whisker (min within fence)": -5.2856,
+    "Lower whisker (min within fence)": -5.2857,
     "Upper whisker (max within fence)": 4.2807
   }
 ]

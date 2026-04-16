@@ -6,42 +6,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import GridSearchCV, TimeSeriesSplit
-from typing import Any
+from json_utils import save_result_json
 
 
-def _to_jsonable(obj: Any) -> Any:
-    if isinstance(obj, pd.DataFrame):
-        records = obj.to_dict(orient="records")
-        return [_to_jsonable(r) for r in records]
-
-    if isinstance(obj, dict):
-        return {str(k): _to_jsonable(v) for k, v in obj.items()}
-
-    try:
-        json.dumps(obj)
-        return obj
-    except TypeError:
-        return str(obj)
-
-
-def save_result_json(
-    result: Any,
-    *,
-    default_filename: str = "model_result.json",
-    indent: int = 2,
-) -> Path:
-    folder_name = default_filename.split("_")[0]
-    path = Path("data/results") / folder_name / default_filename
-    if path.suffix.lower() != ".json":
-        path = path.with_suffix(".json")
-
-    path.parent.mkdir(parents=True, exist_ok=True)
-    payload = _to_jsonable(result)
-    path.write_text(json.dumps(payload, indent=indent, ensure_ascii=False), encoding="utf-8")
 
 
 def load_data():
-    CONFIG_PATH = Path("../data/processed/modeling_config.json")
+    CONFIG_PATH = Path("./data/processed/modeling_config.json")
     cfg = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     data_csv = Path(cfg["data_csv"])
