@@ -226,7 +226,7 @@ def visualize_prediction_vs_actual(y_test, y_pred, target_col_name, model_name: 
     plt.figure(figsize=(14, 6))
     plt.plot(pred_df.index, pred_df["Actual"], label="Actual", linewidth=2, color="#7E7A7A")
     plt.plot(pred_df.index, pred_df[model_name], label=model_name, color="#00FF80")
-    plt.title(f"Test Period: Actual vs Model Predictions (Linear Regression)")
+    plt.title(f"Test Period: Actual vs Model Predictions ({model_name})")
     plt.xlabel("Date")
     plt.ylabel(target_col_name)
     plt.legend()
