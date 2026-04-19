@@ -1,0 +1,9 @@
+[
+  {
+    "Model": "Linear Regression_(train)",
+    "MAE": 1.6129,
+    "RMSE": 2.4296,
+    "MAPE": 0.017,
+    "R2": 0.9981
+  }
+]

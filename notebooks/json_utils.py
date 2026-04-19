@@ -138,18 +138,25 @@ def load_feature_importance() -> pd.DataFrame:
         files = sorted(model_dir.glob("*feature_importance.json"))
         if not files:
             continue
+
         payload = _load_json(files[-1])
+
         for rec in payload:
-            val = None
-            if "coef_scaled" in rec:
-                val = abs(rec["coef_scaled"])
-            elif "coef_original_units" in rec:
-                val = abs(rec["coef_original_units"])
+            val = (
+                rec.get("coef_scaled")
+                if rec.get("coef_scaled") is not None else
+                rec.get("coef_original_units")
+                if rec.get("coef_original_units") is not None else
+                rec.get("importance")
+            )
+
             if val is None:
                 continue
+
             rows.append({
                 "model": model_name,
                 "feature": rec.get("feature", "unknown"),
                 "importance": float(abs(val)),
             })
+
     return pd.DataFrame(rows)
