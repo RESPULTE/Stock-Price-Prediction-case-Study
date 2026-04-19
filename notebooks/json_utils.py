@@ -143,8 +143,6 @@ def load_feature_importance() -> pd.DataFrame:
 
         for rec in payload:
             val = (
-                rec.get("coef_scaled")
-                if rec.get("coef_scaled") is not None else
                 rec.get("coef_original_units")
                 if rec.get("coef_original_units") is not None else
                 rec.get("importance")
